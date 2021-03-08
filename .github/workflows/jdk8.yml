@@ -1,4 +1,4 @@
-name: Docker Build
+name: Maven JDK8
 
 on:
   push:
@@ -37,12 +37,3 @@ jobs:
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
       
-    - name: Security Scan
-      uses: anchore/scan-action@v2
-      id: scan
-      with:
-        image: "edumco/maven:3.6.3-jdk-8-alpine"
-        acs-report-enable: true
-        
-    - name: Security Report
-      run: cat ${{ steps.scan.outputs.sarif }}
