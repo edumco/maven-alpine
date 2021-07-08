@@ -1,4 +1,4 @@
-FROM alpine:3.13.2 as download
+FROM alpine:3.14.0 as download
 
 RUN apk add --no-cache curl
 
