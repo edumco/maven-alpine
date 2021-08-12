@@ -5,6 +5,11 @@ updates:
     schedule:
       interval: "daily"
       
+  - package-ecosystem: "docker"
+    directory: "/jdk8"
+    schedule:
+      interval: "daily"
+      
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
