@@ -1,3 +1,3 @@
-# maven-alpine-openjdk11
+# Maven Alpine Openjdk
 
 Alpine Maven image to acellerate build times 
