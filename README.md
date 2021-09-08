@@ -8,4 +8,4 @@ Clone or copy this repo and rename the folders accordingly
 
 ## License
 
-[MIT LICENSE](LICENSE)
+[![MIT](https://img.shields.io/github/license/edumco/maven-alpine-openjdk)](https://github.com/edumco/maven-alpine-openjdk/)
