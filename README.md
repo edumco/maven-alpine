@@ -1,2 +1,3 @@
-# maven-docker-images
-Maven images packed with essensial plugins to acellerate build times 
+# maven-alpine-openjdk11
+
+Alpine Maven image to acellerate build times 
