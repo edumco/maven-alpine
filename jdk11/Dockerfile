@@ -8,7 +8,7 @@ ENV URL=https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries \
 
 RUN apk add --no-cache curl && \
     curl --remote-name ${URL}/${NAME}-${EXTENSION} && \
-    mkdir -p /usr/share/maven/ref
+    mkdir -p /usr/share/maven/ref &&\
     tar -xaf ${NAME}-${EXTENSION} -C /usr/share/maven --strip-components 1  && \
     rm -f ${NAME}-${EXTENSION} && \
     apk del --purge curl && \
