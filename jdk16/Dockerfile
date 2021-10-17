@@ -1,24 +1,21 @@
-FROM alpine:3.14.2 as download
+FROM adoptopenjdk/openjdk16:alpine-slim
 
-RUN apk add --no-cache curl
+ENV MAVEN_VERSION=3.8.3
+    
+ENV URL=https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries \
+    NAME=apache-maven-${MAVEN_VERSION} \
+    EXTENSION=bin.tar.gz
 
-ENV URL=https://downloads.apache.org/maven/maven-3/3.8.3/binaries/
+RUN apk add --no-cache curl && \
+    curl --remote-name ${URL}/${NAME}-${EXTENSION} && \
+    mkdir -p /usr/share/maven/ref && \
+    tar -xaf ${NAME}-${EXTENSION} -C /usr/share/maven --strip-components 1  && \
+    rm -f ${NAME}-${EXTENSION} && \
+    apk del --purge curl && \
+    ln -s /usr/share/maven/bin/mvn /usr/bin/mvn && \
+    adduser -D maven
 
-ENV FILENAME=apache-maven-3.8.3-bin.tar.gz
+ENV MAVEN_CONFIG=/home/maven/.m2 \
+    MAVEN_HOME=/usr/share/maven
 
-WORKDIR /download
-
-RUN curl --remote-name ${URL}/${FILENAME} && \
-    tar -xzf ${FILENAME} && \
-    rm -f ${FILENAME}
-
-FROM adoptopenjdk/openjdk16:alpine
-
-RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
-    ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
-
-COPY --from=download /download/apache-maven-3.8.3 /usr/share/maven
-
-ENV MAVEN_HOME=/usr/share/maven
-
-ENV MAVEN_CONFIG=/root/.m2
+WORKDIR /home/maven
