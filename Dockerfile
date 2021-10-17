@@ -1,10 +1,12 @@
-FROM adoptopenjdk/openjdk11:alpine-slim
+ARG JDK_IMAGE=adoptopenjdk/openjdk11:alpine-slim
+
+FROM ${JDK_IMAGE}
 
 ENV MAVEN_VERSION=3.8.3
-    
+
 ENV URL=https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries \
     NAME=apache-maven-${MAVEN_VERSION} \
-    EXTENSION=bin.tar.gz
+    EXTENSION=bin.tar.gz 
 
 RUN apk add --no-cache curl && \
     curl --remote-name ${URL}/${NAME}-${EXTENSION} && \
