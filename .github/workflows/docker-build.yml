@@ -16,7 +16,7 @@ jobs:
       uses: docker/setup-buildx-action@v1.6.0
 
     - name: Build
-      run: cd ./jdk11 && docker build . 
+      run: docker build --tag maven-alpine:jdk11 --file ./jdk11/Dockerfile ./jdk11/
       
   jdk16:
     runs-on: ubuntu-latest
@@ -31,4 +31,4 @@ jobs:
       uses: docker/setup-buildx-action@v1.6.0
 
     - name: Build
-      run: cd ./jdk16 && docker build . 
+      run: docker build --tag maven-alpine:jdk16 --file ./jdk16/Dockerfile ./jdk16/
