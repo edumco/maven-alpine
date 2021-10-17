@@ -15,5 +15,6 @@ RUN apk add --no-cache curl && \
     curl --remote-name ${URL}/${FILENAME} && \
     tar -xzf ${FILENAME} && \
     rm -f ${FILENAME} && \
-    ln -s /usr/share/maven/bin/mvn /usr/bin/mvn && \
     apk del --purge curl
+    
+RUN ln -s /usr/share/maven/bin/mvn /usr/bin/mvn && \
