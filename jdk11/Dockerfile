@@ -6,9 +6,12 @@ ENV FILENAME=apache-maven-3.8.3-bin.tar.gz
 
 WORKDIR /download
 
-RUN curl --remote-name ${URL}/${FILENAME} && \
+RUN apk add --no-cache curl && \
+    curl --remote-name ${URL}/${FILENAME} && \
     tar -xzf ${FILENAME} && \
-    rm -f ${FILENAME}
+    rm -f ${FILENAME} && \
+    apk del --purge curl
+    
 
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
     ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
