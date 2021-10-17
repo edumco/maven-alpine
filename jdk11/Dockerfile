@@ -1,8 +1,8 @@
 FROM adoptopenjdk/openjdk11:alpine-slim as download
 
-ENV URL=https://downloads.apache.org/maven/maven-3/3.8.3/binaries/
-
-ENV FILENAME=apache-maven-3.8.3-bin.tar.gz
+ENV MAVEN_VERSION=3.8.3
+ENV URL=https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/
+ENV FILENAME=apache-maven-${MAVEN_VERSION}-bin.tar.gz
 
 WORKDIR /download
 
@@ -12,12 +12,10 @@ RUN apk add --no-cache curl && \
     rm -f ${FILENAME} && \
     apk del --purge curl
     
-
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
-    ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
-
-RUN cp -r /download/apache-maven-3.8.3 /usr/share/maven
-
+    ln -s /usr/share/maven/bin/mvn /usr/bin/mvn && \
+    cp -r /download/apache-maven-${MAVEN_VERSION} /usr/share/maven
+    
 ENV MAVEN_HOME=/usr/share/maven
 
 ENV MAVEN_CONFIG=/root/.m2
