@@ -1,7 +1,5 @@
 FROM adoptopenjdk/openjdk11:alpine-slim as download
 
-RUN apk add --no-cache curl
-
 ENV URL=https://downloads.apache.org/maven/maven-3/3.8.3/binaries/
 
 ENV FILENAME=apache-maven-3.8.3-bin.tar.gz
