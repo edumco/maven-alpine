@@ -1,4 +1,4 @@
-FROM alpine:3.14.2 as download
+FROM adoptopenjdk/openjdk11:alpine-slim as download
 
 RUN apk add --no-cache curl
 
