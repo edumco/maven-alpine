@@ -15,7 +15,7 @@ RUN curl --remote-name ${URL}/${FILENAME} && \
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
     ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
-RUN cp /download/apache-maven-3.8.3 /usr/share/maven
+RUN cp -r /download/apache-maven-3.8.3 /usr/share/maven
 
 ENV MAVEN_HOME=/usr/share/maven
 
