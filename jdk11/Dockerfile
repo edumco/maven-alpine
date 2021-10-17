@@ -12,12 +12,10 @@ RUN curl --remote-name ${URL}/${FILENAME} && \
     tar -xzf ${FILENAME} && \
     rm -f ${FILENAME}
 
-FROM adoptopenjdk/openjdk11:alpine-slim
-
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
     ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
-COPY --from=download /download/apache-maven-3.8.3 /usr/share/maven
+RUN cp /download/apache-maven-3.8.3 /usr/share/maven
 
 ENV MAVEN_HOME=/usr/share/maven
 
