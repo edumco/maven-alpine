@@ -1,5 +1,7 @@
 ARG JDK_IMAGE=adoptopenjdk/openjdk11:alpine-slim
 
+LABEL org.opencontainers.image.source="https://github.com/edumco/maven-alpine"
+
 FROM ${JDK_IMAGE}
 
 ENV MAVEN_VERSION=3.8.3
