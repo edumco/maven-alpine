@@ -1,10 +1,40 @@
-# Maven Alpine Openjdk
+# Maven Alpine
 
-Alpine Maven image to acellerate build times 
+Maven images running on Alpine Linux to acellerate build times on Java projects.
 
 ## Usage
 
-Clone or copy this repo and rename the folders accordingly
+### The easy way
+
+You can pull the built images directly
+
+```shell
+docker pull ghcr.io/edumco/maven-alpine:jdk16
+```
+
+Than you can mount your java project folder on run 
+
+```shell
+docker run -it --mount type=bind,source=/myproject,target=/home/maven ghcr.io/edumco/maven-alpine:jdk16
+```
+
+And finnaly run your maven commands
+
+```shell
+mvn test
+```
+
+### The pro way
+
+Clone or download this repo and build your own image modifying it to your needs.
+
+### The SUPER HYPER MEGA AWSOMWE WAY
+
+Fork this project and help make this become a even usefull repo
+
+## Why another image
+
+Until the creation of this repo the Alpine linux project does not have a JDK16 nor the Maven provides an official container image based on Alpine Linux.
 
 ## License
 
