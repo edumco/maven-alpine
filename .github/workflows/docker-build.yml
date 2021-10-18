@@ -18,12 +18,14 @@ jobs:
     - name: Build
       run: DOCKER_BUILDKIT=1 docker build --tag ghcr.io/edumco/maven-alpine:jdk11 .
       
-    - name: Container Register Login
+    - name: Login on Container Register
+      if: (${BRANCH_NAME} == "main")
       run: echo $CR_PAT | docker login ghcr.io -u edumco --password-stdin
       env:
         CR_PAT: ${{ secrets.CONTAINER_REGISTRY }}
         
-    - name: Image push
+    - name: Push image to register
+      if: (${BRANCH_NAME} == "main")
       run: docker push ghcr.io/edumco/maven-alpine:jdk11
       
   jdk16:
@@ -39,5 +41,15 @@ jobs:
       uses: docker/setup-buildx-action@v1.6.0
 
     - name: Build
-      run: DOCKER_BUILDKIT=1 docker build --tag maven-alpine:jdk16 --build-arg JDK_IMAGE=adoptopenjdk/openjdk11:alpine-slim .
+      run: DOCKER_BUILDKIT=1 docker build --tag maven-alpine:jdk16 --build-arg JDK_IMAGE=adoptopenjdk/openjdk16:alpine-slim .
+      
+    - name: Login on Container Register
+      if: (${BRANCH_NAME} == "main")
+      run: echo $CR_PAT | docker login ghcr.io -u edumco --password-stdin
+      env:
+        CR_PAT: ${{ secrets.CONTAINER_REGISTRY }}
+        
+    - name: Push image to register
+      if: (${BRANCH_NAME} == "main")
+      run: docker push ghcr.io/edumco/maven-alpine:jdk11
       
