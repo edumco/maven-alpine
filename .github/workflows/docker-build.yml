@@ -16,7 +16,7 @@ jobs:
       uses: docker/setup-buildx-action@v1.6.0
 
     - name: Build
-      run: DOCKER_BUILDKIT=1 docker build --tag ghcr.io/DOCKERHUB_USERNAME/maven-alpine:jdk11 .
+      run: DOCKER_BUILDKIT=1 docker build --tag ghcr.io/edumco/maven-alpine:jdk11 .
       
     - name: publish
       run: echo $CR_PAT | docker login ghcr.io -u DOCKERHUB_USERNAME --password-stdin
