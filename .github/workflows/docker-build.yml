@@ -44,12 +44,12 @@ jobs:
       run: DOCKER_BUILDKIT=1 docker build --tag ghcr.io/edumco/maven-alpine:jdk16 --build-arg JDK_IMAGE=adoptopenjdk/openjdk16:alpine-slim .
       
     - name: Login on Container Register
-      if: (${BRANCH_NAME} == "main")
+      if: contains( ${{ github.head_ref }}, "main" )
       run: echo $CR_PAT | docker login ghcr.io -u edumco --password-stdin
       env:
         CR_PAT: ${{ secrets.CONTAINER_REGISTRY }}
         
     - name: Push image to register
-      if: (${BRANCH_NAME} == "main")
+      if: contains( ${{ github.head_ref }}, "main" )
       run: docker push ghcr.io/edumco/maven-alpine:jdk16
       
