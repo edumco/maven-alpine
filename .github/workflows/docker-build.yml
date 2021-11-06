@@ -22,14 +22,14 @@ jobs:
       if: contains( ${{ github.head_ref }}, "main" )
       run: docker push ghcr.io/edumco/maven-alpine:jdk11
       
-  jdk16:
+  jdk17:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
     - name: Build
-      run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk17 --build-arg JDK_IMAGE=adoptopenjdk/openjdk17:alpine-slim .
+      run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk17 --build-arg JDK_IMAGE=openjdk:17-alpine .
       
     - name: Login on Container Register
       if: contains( ${{ github.head_ref }}, "main" )
