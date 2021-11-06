@@ -9,7 +9,7 @@ Maven images running on Alpine Linux to acellerate build times on Java projects.
 You can pull the built images directly
 
 ```shell
-docker pull ghcr.io/edumco/maven-alpine:jdk16
+docker pull ghcr.io/edumco/maven-alpine:jdk17
 ```
 
 Than you can mount your java project folder on run 
