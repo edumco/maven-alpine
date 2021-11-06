@@ -39,5 +39,5 @@ jobs:
         
     - name: Push image to register
       if: contains( ${{ github.head_ref }}, "main" )
-      run: docker push ghcr.io/edumco/maven-alpine:jdk16
+      run: docker push ghcr.io/edumco/maven-alpine:jdk17
       
