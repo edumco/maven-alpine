@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk16 --build-arg JDK_IMAGE=adoptopenjdk/openjdk16:alpine-slim .
+      run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk17 --build-arg JDK_IMAGE=adoptopenjdk/openjdk17:alpine-slim .
       
     - name: Login on Container Register
       if: contains( ${{ github.head_ref }}, "main" )
