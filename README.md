@@ -34,7 +34,7 @@ Fork this project and help make this become a even usefull repo
 
 ## Why another image
 
-Until the creation of this repo the Alpine linux project does not have a JDK16 nor the Maven provides an official container image based on Alpine Linux.
+Until the creation of this repo the Alpine linux project does not have a JDK17 nor the Maven provides an official container image based on Alpine Linux.
 
 ## License
 
