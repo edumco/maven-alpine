@@ -12,11 +12,13 @@ jobs:
     - name: Build
       run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk11 .
       
-    - name: Login on Container Register
+    - name: Login on Container Registry
+      uses: docker/login-action@v1.14.1
       if: contains( ${{ github.head_ref }}, "main" )
-      run: echo $CR_PAT | docker login ghcr.io -u edumco --password-stdin
-      env:
-        CR_PAT: ${{ secrets.CONTAINER_REGISTRY }}
+      with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Push image to register
       if: contains( ${{ github.head_ref }}, "main" )
@@ -31,11 +33,13 @@ jobs:
     - name: Build
       run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk17 --build-arg JDK_IMAGE=openjdk:17-alpine .
       
-    - name: Login on Container Register
+    - name: Login on Container Registry
+      uses: docker/login-action@v1.14.1
       if: contains( ${{ github.head_ref }}, "main" )
-      run: echo $CR_PAT | docker login ghcr.io -u edumco --password-stdin
-      env:
-        CR_PAT: ${{ secrets.CONTAINER_REGISTRY }}
+      with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Push image to register
       if: contains( ${{ github.head_ref }}, "main" )
