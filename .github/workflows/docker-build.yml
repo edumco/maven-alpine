@@ -18,7 +18,7 @@ jobs:
       with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.CONTAINER_REGISTRY }}
         
     - name: Push image to register
       if: contains( ${{ github.head_ref }}, "main" )
@@ -39,7 +39,7 @@ jobs:
       with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.CONTAINER_REGISTRY }}
         
     - name: Push image to register
       if: contains( ${{ github.head_ref }}, "main" )
