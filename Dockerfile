@@ -4,7 +4,7 @@ FROM ${JDK_IMAGE}
 
 LABEL org.opencontainers.image.source="https://github.com/edumco/maven-alpine"
 
-ENV MAVEN_VERSION=3.8.4
+ENV MAVEN_VERSION=3.8.5
 
 ENV URL=https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries \
     NAME=apache-maven-${MAVEN_VERSION} \
