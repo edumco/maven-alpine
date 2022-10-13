@@ -13,7 +13,7 @@ jobs:
       run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk11 .
       
     - name: Login on Container Registry
-      uses: docker/login-action@v1.14.1
+      uses: docker/login-action@v2.1.0
       if: contains( ${{ github.head_ref }}, "main" )
       with:
           registry: ghcr.io
@@ -34,7 +34,7 @@ jobs:
       run: docker buildx build --tag ghcr.io/edumco/maven-alpine:jdk17 --build-arg JDK_IMAGE=openjdk:17-alpine .
       
     - name: Login on Container Registry
-      uses: docker/login-action@v1.14.1
+      uses: docker/login-action@v2.1.0
       if: contains( ${{ github.head_ref }}, "main" )
       with:
           registry: ghcr.io
